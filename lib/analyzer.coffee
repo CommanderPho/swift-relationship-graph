@@ -66,6 +66,7 @@ module.exports = (json) ->
         name = _.trim entry[Key.Name]
         match = /^([^<]*)(?:<.*>)?$/gi.exec name
         name = _.nth match, 1
+        name = name.replace("PhoNSUI.", "PhoNSUI_") # New
 
         return name
 
