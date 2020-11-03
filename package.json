@@ -1,6 +1,6 @@
 {
 	"name": "swift-relationship-graph",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A relationship graph generator for Swift codebases",
 	"main": "bin/swift-relationship-graph",
 	"scripts": {

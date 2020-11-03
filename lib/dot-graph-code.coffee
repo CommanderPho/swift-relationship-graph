@@ -17,6 +17,11 @@ dotGraphPath = path.resolve __dirname, '../assets/dotGraph.template'
 dotGraphSource = fs.readFileSync dotGraphPath
 dotGraphTemplate = handlebars.compile dotGraphSource.toString()
 
+makeNameSafe =(unsafeName) ->
+  safeName = unsafeName.replace /\./, "_"
+  console.log "Safe Name is: "+safeName
+  return safeName
+
 module.exports = (json, types) ->
 
   analysis = analyzer json
@@ -51,7 +56,8 @@ module.exports = (json, types) ->
   entities = {}
   for type, typeInfo of graph
     for name, parents of typeInfo.data
-      entities[name] =
+      safeName = makeNameSafe name
+      entities[safeName] =
         color: typeInfo.color
         shape: typeInfo.shape
         parents: parents

@@ -69,8 +69,14 @@ run = (parameters) ->
   fs.readFileAsync( fileName )
     .then (data) ->
       return JSON.parse data.toString()
-    .then (json) ->
-      availableOperations[operation] json, types, outputFileName
+	.then (json) ->
+		console.log "filtering json...."
+		result =
+			for text, weight of json.counts
+				{ text, weight }
+		return result
+    .then (filteredJson) ->
+      availableOperations[operation] filteredJson, types, outputFileName
     .caught (error) ->
 
       console.error ''
